@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            padding: 40px;
+            border-radius: 15px;
+            /* Transparent container */
+            box-shadow: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            animation: scrollText 8s linear infinite;
+            white-space: nowrap;
+        }
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 100px; /* Increased horizontal spacing between columns */
+            row-gap: 15px; /* Minimal vertical spacing between rows */
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #b3e5fc;
+            border-radius: 8px;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.9);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="number"]:focus {
+            border-color: #ff3333;
+            box-shadow: 0 0 8px rgba(2, 136, 209, 0.3);
+            outline: none;
+        }
+        .submit-container {
+            grid-column: span 2;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        input[type="submit"] {
+            background: linear-gradient(90deg, #0288d1, #0277bd);
+            color: white;
+            padding: 14px 50px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background: linear-gradient(90deg, #0277bd, #01579b);
+            transform: scale(1.05);
+        }
+        .team-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .team-section h3 {
+            color: #ffffff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .team-members {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* Space between team members */
+        }
+        .team-member {
+            text-align: center;
+        }
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Circular photos */
+            object-fit: cover;
+            border: 2px solid #b3e5fc; /* Border to match form inputs */
+            transition: transform 0.3s ease;
+        }
+        .team-member img:hover {
+            transform: scale(1.1); /* Slight zoom on hover */
+        }
+        .team-member p {
+            color: #ffffff;
+            font-size: 1em;
+            margin-top: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scrollText {
+            0% { transform: translateX(100%); } /* Start from left end */
+             /* Move to right end */
+        }
+        @media (max-width: 600px) {
+            form {
+                grid-template-columns: 1fr;
+                column-gap: 0; /* No horizontal gap in single-column layout */
+                row-gap: 12px; /* Slightly reduced vertical gap for mobile */
+            }
+            .submit-container {
+                grid-column: span 1;
+            }
+            h1 { 
+                font-size: 2em; 
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            }
+            .container {
+                padding: 25px;
+                max-width: 95%;
+            }
+            input[type="number"], input[type="submit"] {
+                font-size: 0.9em;
+                padding: 12px;
+            }
+            label {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            }
+            .submit-container {
+                margin-top: 15px;
+            }
+            .team-members {
+                flex-direction: column; /* Stack team members vertically on mobile */
+                align-items: center;
+                gap: 20px;
+            }
+            .team-member img {
+                width: 80px;
+                height: 80px;
+            }
+            .team-section h3 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Diabetes Prediction</h1>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="Pregnancies">Pregnancies</label>
+                <input type="number" id="Pregnancies" name="Pregnancies" step="1" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="PlasmaGlucose">Plasma Glucose (mg/dL)</label>
+                <input type="number" id="PlasmaGlucose" name="PlasmaGlucose" step="0.1" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="DiastolicBloodPressure">Diastolic Blood Pressure (mmHg)</label>
+                <input type="number" id="DiastolicBloodPressure" name="DiastolicBloodPressure" step="0.1" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="TricepsThickness">Triceps Thickness (mm)</label>
+                <input type="number" id="TricepsThickness" name="TricepsThickness" step="0.1" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="SerumInsulin">Serum Insulin (µU/mL)</label>
+                <input type="number" id="SerumInsulin" name="SerumInsulin" step="0.1" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="BMI">BMI (kg/m²)</label>
+                <input type="number" id="BMI" name="BMI" step="0.1" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="DiabetesPedigree">Diabetes Pedigree Function</label>
+                <input type="number" id="DiabetesPedigree" name="DiabetesPedigree" step="0.001" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="Age">Age (years)</label>
+                <input type="number" id="Age" name="Age" step="1" min="0" required>
+            </div>
+            <div class="submit-container">
+                <input type="submit" value="Predict Now">
+            </div>
+        </form>
+        <div class="team-section">
+            <h3>Designed and Developed By</h3>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="/static/images/member1.jpg" alt="Member 1">
+                    <p>Vedasri S</p>
+                </div>
+                <div class="team-member">
+                    <img src="/static/images/member2.png" alt="Member 2">
+                    <p>Sree Vyshnavi N</p>
+                </div>
+                <div class="team-member">
+                    <img src="/static/images/member3.jpg" alt="Member 3">
+                    <p>Chandrika M</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
