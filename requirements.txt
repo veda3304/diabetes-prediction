@@ -11,3 +11,4 @@ packaging==24.2
 scipy==1.15.2
 Werkzeug==3.1.3
 pickleshare==0.7.5
+pandas==2.2.3
