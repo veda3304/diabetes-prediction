@@ -1,115 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Result</title>
     <style>
-      body {
-        font-family: "Poppins", sans-serif;
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .container {
-        background: white;
-        width: 90%;
-        max-width: 600px;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        animation: fadeIn 1s ease-in-out;
-        text-align: center;
-      }
-      h1 {
-        color: #ff3333;
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-      }
-      .result {
-        padding: 20px;
-        background: #e1f5fe;
-        border-radius: 10px;
-        color: #ff3333;
-        font-size: 1.4em;
-        font-weight: 500;
-        animation: slideIn 0.5s ease-in-out;
-      }
-      .result p {
-        margin: 10px 0;
-      }
-      .back-btn {
-        display: inline-block;
-        margin-top: 20px;
-        background: linear-gradient(90deg, #0288d1, #0277bd);
-        color: white;
-        padding: 12px 30px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-size: 1.1em;
-        transition:
-          transform 0.2s ease,
-          background 0.3s ease;
-      }
-      .back-btn:hover {
-        background: linear-gradient(90deg, #0277bd, #01579b);
-        transform: scale(1.05);
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      @media (max-width: 480px) {
-        h1 {
-          font-size: 2em;
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .container {
-          padding: 20px;
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+            text-align: center;
+        }
+        h1 {
+            color: #ff3333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         .result {
-          font-size: 1.2em;
+            padding: 20px;
+            background: #e1f5fe;
+            border-radius: 10px;
+            color: #ff3333;
+            font-size: 1.4em;
+            font-weight: 500;
+            animation: slideIn 0.5s ease-in-out;
+        }
+        .result p {
+            margin: 10px 0;
         }
         .back-btn {
-          font-size: 1em;
+            display: inline-block;
+            margin-top: 20px;
+            background: linear-gradient(90deg, #0288d1, #0277bd);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: transform 0.2s ease, background 0.3s ease;
         }
-      }
+        .back-btn:hover {
+            background: linear-gradient(90deg, #0277bd, #01579b);
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            .container { padding: 20px; }
+            .result { font-size: 1.2em; }
+            .back-btn { font-size: 1em; }
+        }
     </style>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
     <div class="container">
-      <h1>Prediction Result</h1>
-      <div class="result">
-        <p>{{ prediction_text }}</p>
-        {% if probability_text %}
-        <p>{{ probability_text }}</p>
-        {% endif %}
-      </div>
-      <a href="/" class="back-btn">Back to Input</a>
+        <h1>Prediction Result</h1>
+        <div class="result">
+            <p>{{ prediction_text }}</p>
+            {% if probability_text %}
+            <p>{{ probability_text }}</p>
+            {% endif %}
+        </div>
+        <a href="/" class="back-btn">Back to Input</a>
     </div>
-  </body>
+</body>
 </html>
